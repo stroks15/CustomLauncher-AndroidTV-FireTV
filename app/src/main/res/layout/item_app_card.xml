@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tarjeta gigante de la Fila 0 (apps favoritas). Texto de 28sp. -->
+<com.tuusuario.customlauncher.BigCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/card_app_ancho"
+    android:layout_height="@dimen/card_app_alto"
+    android:layout_margin="@dimen/card_margen"
+    android:background="@drawable/bg_card"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/icono"
+        android:layout_width="@dimen/card_app_icono"
+        android:layout_height="@dimen/card_app_icono"
+        android:importantForAccessibility="no"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/etiqueta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textColor="@color/texto"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+</com.tuusuario.customlauncher.BigCardView>

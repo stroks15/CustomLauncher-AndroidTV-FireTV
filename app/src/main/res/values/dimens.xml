@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Diseñado para una TV de 1080p a densidad xhdpi (≈ 960 x 540 dp).
+  Si en tu Fire Stick las 4 tarjetas de la Fila 0 no caben, reduce card_app_ancho.
+-->
+<resources>
+    <dimen name="card_margen">16dp</dimen>
+
+    <!-- Fila 0: aplicaciones favoritas -->
+    <dimen name="card_app_ancho">185dp</dimen>
+    <dimen name="card_app_alto">210dp</dimen>
+    <dimen name="card_app_icono">100dp</dimen>
+
+    <!-- Filas 1-3: canales / contenidos -->
+    <dimen name="card_canal_ancho">230dp</dimen>
+    <dimen name="card_canal_alto">175dp</dimen>
+</resources>

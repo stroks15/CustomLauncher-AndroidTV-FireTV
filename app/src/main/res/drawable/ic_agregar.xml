@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Signo "+" que se muestra cuando una ranura de la Fila 0 no tiene app instalada -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+    <path
+        android:fillColor="#FFEB3B"
+        android:pathData="M42,18h12v24h24v12h-24v24h-12v-24h-24v-12h24z" />
+</vector>

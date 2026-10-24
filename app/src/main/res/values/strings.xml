@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kat &amp; Liam h4ck Launcher</string>
+    <string name="titulo_inicio">Kat &amp; Liam h4ck Launcher</string>
+    <string name="fila_apps">🚀 MIS APLICACIONES FAVORITAS</string>
+    <string name="fila_continuar">▶️ CONTINUAR VIENDO</string>
+    <string name="quitar_continuar_titulo">¿Quitar «%1$s»?</string>
+    <string name="quitar_continuar_mensaje">Se quitará de Continuar viendo. Volverá a aparecer si la abres otra vez.</string>
+    <string name="quitar_continuar_si">Ya la terminé, quitar</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="wifi">WiFi</string>
+    <string name="elegir_app">Elegir app</string>
+    <string name="app_no_instalada">Esta aplicación no está instalada. Mantén presionado el botón central para elegir otra.</string>
+    <string name="sin_dictado">Este equipo no tiene dictado por voz. Usa el botón del micrófono de tu control remoto.</string>
+    <string name="kino_no_instalada">Kino TV no está instalada en este equipo.</string>
+    <string name="no_se_pudo_abrir">No se pudo abrir la opción elegida.</string>
+    <string name="hint_busqueda">Di el canal o la película que quieres ver</string>
+    <string name="prompt_voz">Di el canal o la película que quieres ver</string>
+    <string name="dialogo_titulo">Elige la aplicación para el botón %1$d</string>
+    <string name="cancelar">Cancelar</string>
+</resources>

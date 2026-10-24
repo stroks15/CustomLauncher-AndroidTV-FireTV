@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Fondo de tarjeta:
+  • En reposo : borde gris de 2dp.
+  • Enfocada  : borde amarillo brillante de 6dp ("brillo") alrededor de un fondo más claro.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true">
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/amarillo_foco" />
+                    <corners android:radius="22dp" />
+                </shape>
+            </item>
+            <item
+                android:bottom="6dp"
+                android:left="6dp"
+                android:right="6dp"
+                android:top="6dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/tarjeta_enfocada" />
+                    <corners android:radius="16dp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/tarjeta" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/borde_reposo" />
+            <corners android:radius="22dp" />
+        </shape>
+    </item>
+</selector>

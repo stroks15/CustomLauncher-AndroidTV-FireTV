@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema principal: base Leanback con fondo negro puro -->
+    <style name="Theme.CustomLauncher" parent="Theme.Leanback">
+        <item name="android:windowBackground">@color/fondo</item>
+    </style>
+
+    <!-- Diálogo del selector de apps (fondo oscuro, acento amarillo) -->
+    <style name="DialogoTV" parent="android:Theme.Material.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/bg_dialogo</item>
+        <item name="android:textColorPrimary">@color/texto</item>
+        <item name="android:colorAccent">@color/amarillo_foco</item>
+    </style>
+</resources>

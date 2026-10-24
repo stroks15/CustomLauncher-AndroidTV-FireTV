@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icono cuadrado del launcher -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+    <path
+        android:fillColor="#0D47A1"
+        android:pathData="M0,0h96v96h-96z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,24h64a6,6 0 0 1 6,6v34a6,6 0 0 1 -6,6h-64a6,6 0 0 1 -6,-6v-34a6,6 0 0 1 6,-6z" />
+    <path
+        android:fillColor="#0D47A1"
+        android:pathData="M20,32h56v26h-56z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M36,78h24v5h-24z" />
+</vector>

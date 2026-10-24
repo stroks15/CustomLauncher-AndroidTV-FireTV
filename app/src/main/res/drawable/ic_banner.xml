@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Banner 320x180 que se muestra en la lista de apps de Android TV / Fire OS -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+    <path
+        android:fillColor="#0D47A1"
+        android:pathData="M0,0h320v180h-320z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M90,40h140a10,10 0 0 1 10,10v70a10,10 0 0 1 -10,10h-140a10,10 0 0 1 -10,-10v-70a10,10 0 0 1 10,-10z" />
+    <path
+        android:fillColor="#0D47A1"
+        android:pathData="M100,56h120v58h-120z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M140,138h40v8h-40z" />
+</vector>

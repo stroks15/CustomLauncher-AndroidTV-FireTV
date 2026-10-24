@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Paleta de contraste ultra alto (blanco/amarillo sobre negro) -->
+<resources>
+    <color name="fondo">#000000</color>
+    <color name="texto">#FFFFFF</color>
+    <color name="amarillo_foco">#FFEB3B</color>
+    <color name="tarjeta">#1C1C1C</color>
+    <color name="tarjeta_enfocada">#2B2B2B</color>
+    <color name="borde_reposo">#9E9E9E</color>
+    <color name="dialogo_fondo">#101010</color>
+</resources>
