@@ -1,0 +1,31 @@
+name: Build Android TV / Fire TV APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "customlauncher/**"
+      - ".github/workflows/build-android-tv.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+      - name: Build debug APK
+        working-directory: customlauncher
+        run: gradle assembleDebug
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: customlauncher-android-tv-firetv-debug
+          path: customlauncher/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
