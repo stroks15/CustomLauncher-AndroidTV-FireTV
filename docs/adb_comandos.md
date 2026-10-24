@@ -195,3 +195,12 @@ adb shell pm enable com.amazon.tv.launcher
 adb shell pm clear com.google.android.tvlauncher
 adb uninstall com.tuusuario.customlauncher
 ```
+
+
+### 6.9 Historial de YouTube / Shorts
+
+```bash
+adb shell "am start -n com.tuusuario.customlauncher/.MainActivity -a android.intent.action.SEARCH --es query 'abre el historial de YouTube'"
+adb shell "am start -n com.tuusuario.customlauncher/.MainActivity -a android.intent.action.SEARCH --es query 'videos vistos'"
+adb shell "am start -n com.tuusuario.customlauncher/.MainActivity -a android.intent.action.SEARCH --es query 'shorts'"
+```

@@ -17,6 +17,8 @@ import android.view.Gravity
 import android.graphics.Typeface
 import android.widget.TextView
 import android.widget.Toast
+import java.text.Normalizer
+import java.util.Locale
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
@@ -105,12 +107,11 @@ class MainActivity : FragmentActivity() {
     }
 
     private fun normalizarTexto(texto: String): String {
-        return texto.lowercase()
-            .replace("á", "a")
-            .replace("é", "e")
-            .replace("í", "i")
-            .replace("ó", "o")
-            .replace("ú", "u")
+        // Quita diacríticos de forma general y normaliza espacios sin depender del idioma del equipo.
+        return Normalizer.normalize(texto, Normalizer.Form.NFD)
+            .replace("\\p{Mn}+".toRegex(), "")
+            .lowercase(Locale.ROOT)
+            .replace("\\s+".toRegex(), " ")
             .trim()
     }
 
@@ -153,6 +154,11 @@ class MainActivity : FragmentActivity() {
             limpia.contains("comedia") || limpia.contains("risa") || limpia.contains("humor") -> lanzarKinoPlugin(launchIntent, "comedia", "comedia_list", "menu")
             limpia.contains("regional") || limpia.contains("canal del estado") -> lanzarKinoPlugin(launchIntent, "regionales", "regionales_list", "menu")
             limpia.contains("musica") || limpia.contains("bolero") || limpia.contains("ranchera") -> lanzarKinoPlugin(launchIntent, "audios", "musica_recuerdo", "stream")
+
+            // 6. Historial continuo de YouTube / Shorts (plugin shorts-yt)
+            (limpia.contains("youtube") && (limpia.contains("historial") || limpia.contains("visto") || limpia.contains("videos"))) ||
+                limpia.contains("shorts") || limpia.contains("continuar viendo") ->
+                lanzarKinoPlugin(launchIntent, "shorts-yt", "historial_youtube", "resume")
 
             // Fallback: Si no coincide, manda el texto crudo a la búsqueda general de Kino
             else -> {

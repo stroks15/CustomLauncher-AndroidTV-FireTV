@@ -4,33 +4,288 @@
       "id": "en_vivo",
       "title": "📺 CANALES EN VIVO",
       "items": [
-        {"id":"canal_estrellas","title":"Las Estrellas","subtitle":"Televisión abierta","plugin_source":"xuper","target_content":"Canal de las Estrellas","playback_mode":"live","accent_color":"#B71C1C","voice_aliases":["estrellas","canal de las estrellas"]},
-        {"id":"canal_5","title":"Canal 5","subtitle":"Entretenimiento","plugin_source":"xuper","target_content":"Canal 5","playback_mode":"live","accent_color":"#1565C0","voice_aliases":["canal cinco","canal 5"]},
-        {"id":"azteca_uno","title":"Azteca Uno","subtitle":"Televisión abierta","plugin_source":"xuper","target_content":"Canal Azteca Uno","playback_mode":"live","accent_color":"#EF6C00","voice_aliases":["azteca uno"]},
-        {"id":"canal_7","title":"Canal 7","subtitle":"Entretenimiento","plugin_source":"xuper","target_content":"Canal 7","playback_mode":"live","accent_color":"#6A1B9A","voice_aliases":["canal siete","canal 7"]},
-        {"id":"canal_11","title":"Canal Once","subtitle":"Cultura y educación","plugin_source":"cultural","target_content":"Canal 11","playback_mode":"live","accent_color":"#00838F","voice_aliases":["canal once","canal 11"]},
-        {"id":"canal_22","title":"Canal 22","subtitle":"Cultura","plugin_source":"cultural","target_content":"Canal 22","playback_mode":"live","accent_color":"#2E7D32","voice_aliases":["canal 22"]}
+        {
+          "id": "canal_estrellas",
+          "title": "Las Estrellas",
+          "subtitle": "Televisión abierta",
+          "plugin_source": "xuper",
+          "target_content": "Canal de las Estrellas",
+          "playback_mode": "live",
+          "accent_color": "#B71C1C",
+          "voice_aliases": [
+            "estrellas",
+            "canal de las estrellas"
+          ]
+        },
+        {
+          "id": "canal_5",
+          "title": "Canal 5",
+          "subtitle": "Entretenimiento",
+          "plugin_source": "xuper",
+          "target_content": "Canal 5",
+          "playback_mode": "live",
+          "accent_color": "#1565C0",
+          "voice_aliases": [
+            "canal cinco",
+            "canal 5"
+          ]
+        },
+        {
+          "id": "azteca_uno",
+          "title": "Azteca Uno",
+          "subtitle": "Televisión abierta",
+          "plugin_source": "xuper",
+          "target_content": "Canal Azteca Uno",
+          "playback_mode": "live",
+          "accent_color": "#EF6C00",
+          "voice_aliases": [
+            "azteca uno"
+          ]
+        },
+        {
+          "id": "canal_7",
+          "title": "Canal 7",
+          "subtitle": "Entretenimiento",
+          "plugin_source": "xuper",
+          "target_content": "Canal 7",
+          "playback_mode": "live",
+          "accent_color": "#6A1B9A",
+          "voice_aliases": [
+            "canal siete",
+            "canal 7"
+          ]
+        },
+        {
+          "id": "canal_11",
+          "title": "Canal Once",
+          "subtitle": "Cultura y educación",
+          "plugin_source": "cultural",
+          "target_content": "Canal 11",
+          "playback_mode": "live",
+          "accent_color": "#00838F",
+          "voice_aliases": [
+            "canal once",
+            "canal 11"
+          ]
+        },
+        {
+          "id": "canal_22",
+          "title": "Canal 22",
+          "subtitle": "Cultura",
+          "plugin_source": "cultural",
+          "target_content": "Canal 22",
+          "playback_mode": "live",
+          "accent_color": "#2E7D32",
+          "voice_aliases": [
+            "canal 22"
+          ]
+        },
+        {
+          "id": "n_mas",
+          "title": "N+",
+          "subtitle": "Noticias",
+          "plugin_source": "xuper",
+          "target_content": "Canal N+",
+          "playback_mode": "live",
+          "accent_color": "#263238",
+          "voice_aliases": [
+            "n mas",
+            "n más"
+          ]
+        },
+        {
+          "id": "multimedios",
+          "title": "Multimedios",
+          "subtitle": "Televisión abierta",
+          "plugin_source": "xuper",
+          "target_content": "Canal Multimedios de la CDMX",
+          "playback_mode": "live",
+          "accent_color": "#00695C",
+          "voice_aliases": [
+            "multimedios"
+          ]
+        },
+        {
+          "id": "gourmet",
+          "title": "El Gourmet",
+          "subtitle": "Cocina",
+          "plugin_source": "xuper",
+          "target_content": "Canal El Gourmet",
+          "playback_mode": "live",
+          "accent_color": "#AD1457",
+          "voice_aliases": [
+            "gourmet",
+            "el gourmet"
+          ]
+        },
+        {
+          "id": "enlace",
+          "title": "Canal Enlace",
+          "subtitle": "Inspiración y familia",
+          "plugin_source": "pluto",
+          "target_content": "Canal Enlace",
+          "playback_mode": "live",
+          "accent_color": "#4527A0",
+          "voice_aliases": [
+            "enlace",
+            "canal enlace"
+          ]
+        },
+        {
+          "id": "azteca_uno_una_hora",
+          "title": "Azteca Uno · 1 hora antes",
+          "subtitle": "Señal con retraso horario",
+          "plugin_source": "pluto",
+          "target_content": "Azteca Uno -1 Hora",
+          "playback_mode": "live",
+          "accent_color": "#EF6C00",
+          "voice_aliases": [
+            "azteca uno menos una hora",
+            "azteca una hora antes"
+          ]
+        },
+        {
+          "id": "tv_unam",
+          "title": "TV UNAM",
+          "subtitle": "Cultura y conocimiento",
+          "plugin_source": "cultural",
+          "target_content": "TV UNAM",
+          "playback_mode": "live",
+          "accent_color": "#37474F",
+          "voice_aliases": [
+            "tv unam",
+            "unam"
+          ]
+        }
       ]
     },
     {
       "id": "cine_clasico",
       "title": "🎬 CINE CLÁSICO Y ÉPOCA DE ORO",
       "items": [
-        {"id":"pedro_infante","title":"Pedro Infante","subtitle":"Cine mexicano clásico","plugin_source":"archive","target_content":"Pedro Infante","playback_mode":"search","accent_color":"#6D4C41","voice_aliases":["pedro infante","películas de Pedro Infante"]},
-        {"id":"cantinflas","title":"Cantinflas","subtitle":"Comedia clásica","plugin_source":"archive","target_content":"Cantinflas","playback_mode":"search","accent_color":"#5D4037","voice_aliases":["cantinflas"]},
-        {"id":"jorge_negrete","title":"Jorge Negrete","subtitle":"Cine mexicano clásico","plugin_source":"archive","target_content":"Jorge Negrete","playback_mode":"search","accent_color":"#455A64","voice_aliases":["jorge negrete"]},
-        {"id":"cine_oro","title":"Época de Oro","subtitle":"Películas clásicas","plugin_source":"archive","target_content":"cine de oro mexicano","playback_mode":"search","accent_color":"#8D6E63","voice_aliases":["cine de oro","películas viejas"]}
+        {
+          "id": "pedro_infante",
+          "title": "Pedro Infante",
+          "subtitle": "Cine mexicano clásico",
+          "plugin_source": "archive",
+          "target_content": "Pedro Infante",
+          "playback_mode": "search",
+          "accent_color": "#6D4C41",
+          "voice_aliases": [
+            "pedro infante",
+            "películas de Pedro Infante"
+          ]
+        },
+        {
+          "id": "cantinflas",
+          "title": "Cantinflas",
+          "subtitle": "Comedia clásica",
+          "plugin_source": "archive",
+          "target_content": "Cantinflas",
+          "playback_mode": "search",
+          "accent_color": "#5D4037",
+          "voice_aliases": [
+            "cantinflas"
+          ]
+        },
+        {
+          "id": "jorge_negrete",
+          "title": "Jorge Negrete",
+          "subtitle": "Cine mexicano clásico",
+          "plugin_source": "archive",
+          "target_content": "Jorge Negrete",
+          "playback_mode": "search",
+          "accent_color": "#455A64",
+          "voice_aliases": [
+            "jorge negrete"
+          ]
+        },
+        {
+          "id": "cine_oro",
+          "title": "Época de Oro",
+          "subtitle": "Películas clásicas",
+          "plugin_source": "archive",
+          "target_content": "cine de oro mexicano",
+          "playback_mode": "search",
+          "accent_color": "#8D6E63",
+          "voice_aliases": [
+            "cine de oro",
+            "películas viejas"
+          ]
+        }
       ]
     },
     {
       "id": "entretenimiento",
       "title": "⭐ SERIES, NOVELAS Y ENTRETENIMIENTO",
       "items": [
-        {"id":"novelas","title":"Telenovelas","subtitle":"Novelas y dramas","plugin_source":"novelas","target_content":"telenovelas_list","playback_mode":"menu","accent_color":"#AD1457","voice_aliases":["novelas","telenovelas"]},
-        {"id":"documentales","title":"Documentales","subtitle":"Historia y naturaleza","plugin_source":"docs","target_content":"documentales_list","playback_mode":"menu","accent_color":"#00695C","voice_aliases":["documentales","naturaleza","historia"]},
-        {"id":"retro","title":"Series retro","subtitle":"Series de antes","plugin_source":"retro-tv","target_content":"retro_list","playback_mode":"menu","accent_color":"#283593","voice_aliases":["series retro","series viejas"]},
-        {"id":"comedia","title":"Comedia","subtitle":"Para reír","plugin_source":"comedia","target_content":"comedia_list","playback_mode":"menu","accent_color":"#F9A825","voice_aliases":["comedia","humor"]},
-        {"id":"musica","title":"Música del recuerdo","subtitle":"Boleros y rancheras","plugin_source":"audios","target_content":"musica_recuerdo","playback_mode":"stream","accent_color":"#4527A0","voice_aliases":["música del recuerdo","boleros","rancheras"]}
+        {
+          "id": "novelas",
+          "title": "Telenovelas",
+          "subtitle": "Novelas y dramas",
+          "plugin_source": "novelas",
+          "target_content": "telenovelas_list",
+          "playback_mode": "menu",
+          "accent_color": "#AD1457",
+          "voice_aliases": [
+            "novelas",
+            "telenovelas"
+          ]
+        },
+        {
+          "id": "documentales",
+          "title": "Documentales",
+          "subtitle": "Historia y naturaleza",
+          "plugin_source": "docs",
+          "target_content": "documentales_list",
+          "playback_mode": "menu",
+          "accent_color": "#00695C",
+          "voice_aliases": [
+            "documentales",
+            "naturaleza",
+            "historia"
+          ]
+        },
+        {
+          "id": "retro",
+          "title": "Series retro",
+          "subtitle": "Series de antes",
+          "plugin_source": "retro-tv",
+          "target_content": "retro_list",
+          "playback_mode": "menu",
+          "accent_color": "#283593",
+          "voice_aliases": [
+            "series retro",
+            "series viejas"
+          ]
+        },
+        {
+          "id": "comedia",
+          "title": "Comedia",
+          "subtitle": "Para reír",
+          "plugin_source": "comedia",
+          "target_content": "comedia_list",
+          "playback_mode": "menu",
+          "accent_color": "#F9A825",
+          "voice_aliases": [
+            "comedia",
+            "humor"
+          ]
+        },
+        {
+          "id": "musica",
+          "title": "Música del recuerdo",
+          "subtitle": "Boleros y rancheras",
+          "plugin_source": "audios",
+          "target_content": "musica_recuerdo",
+          "playback_mode": "stream",
+          "accent_color": "#4527A0",
+          "voice_aliases": [
+            "música del recuerdo",
+            "boleros",
+            "rancheras"
+          ]
+        }
       ]
     },
     {
@@ -38,7 +293,21 @@
       "title": "▶️ HISTORIAL RECIENTE",
       "dynamic_history": true,
       "items": [
-        {"id":"muestra_historial","title":"Explorar contenido","subtitle":"Abre Kino TV para buscar","plugin_source":"xuper","target_content":"contenido recomendado","playback_mode":"search","accent_color":"#37474F","sample":true}
+        {
+          "id": "muestra_historial",
+          "title": "Historial de YouTube",
+          "subtitle": "Videos vistos recientemente",
+          "plugin_source": "shorts-yt",
+          "target_content": "historial_youtube",
+          "playback_mode": "resume",
+          "accent_color": "#37474F",
+          "sample": true,
+          "voice_aliases": [
+            "historial de youtube",
+            "videos vistos",
+            "shorts"
+          ]
+        }
       ]
     }
   ]
