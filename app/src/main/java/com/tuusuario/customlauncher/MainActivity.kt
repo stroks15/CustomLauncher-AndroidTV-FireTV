@@ -149,7 +149,7 @@ class MainActivity : FragmentActivity() {
 
             // 5. Mapeo a los Nuevos Plugins de Entretenimiento
             limpia.contains("novela") || limpia.contains("telenovela") || limpia.contains("drama") -> lanzarKinoPlugin(launchIntent, "novelas", "telenovelas_list", "menu")
-            limpia.contains("documental") || limpia.contains("historia") || limpia.contains("naturaleza") -> lanzarKinoPlugin(launchIntent, "docs", "documentales_list", "menu")
+            limpia.contains("documental") || limpia == "historia" || limpia.contains(" historia ") || limpia.contains("naturaleza") -> lanzarKinoPlugin(launchIntent, "docs", "documentales_list", "menu")
             limpia.contains("serie vieja") || limpia.contains("retro") || limpia.contains("series de antes") -> lanzarKinoPlugin(launchIntent, "retro-tv", "retro_list", "menu")
             limpia.contains("comedia") || limpia.contains("risa") || limpia.contains("humor") -> lanzarKinoPlugin(launchIntent, "comedia", "comedia_list", "menu")
             limpia.contains("regional") || limpia.contains("canal del estado") -> lanzarKinoPlugin(launchIntent, "regionales", "regionales_list", "menu")
