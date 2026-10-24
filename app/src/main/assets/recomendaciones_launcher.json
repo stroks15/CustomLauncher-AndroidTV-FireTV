@@ -1,0 +1,45 @@
+{
+  "rows": [
+    {
+      "id": "en_vivo",
+      "title": "📺 CANALES EN VIVO",
+      "items": [
+        {"id":"canal_estrellas","title":"Las Estrellas","subtitle":"Televisión abierta","plugin_source":"xuper","target_content":"Canal de las Estrellas","playback_mode":"live","accent_color":"#B71C1C","voice_aliases":["estrellas","canal de las estrellas"]},
+        {"id":"canal_5","title":"Canal 5","subtitle":"Entretenimiento","plugin_source":"xuper","target_content":"Canal 5","playback_mode":"live","accent_color":"#1565C0","voice_aliases":["canal cinco","canal 5"]},
+        {"id":"azteca_uno","title":"Azteca Uno","subtitle":"Televisión abierta","plugin_source":"xuper","target_content":"Canal Azteca Uno","playback_mode":"live","accent_color":"#EF6C00","voice_aliases":["azteca uno"]},
+        {"id":"canal_7","title":"Canal 7","subtitle":"Entretenimiento","plugin_source":"xuper","target_content":"Canal 7","playback_mode":"live","accent_color":"#6A1B9A","voice_aliases":["canal siete","canal 7"]},
+        {"id":"canal_11","title":"Canal Once","subtitle":"Cultura y educación","plugin_source":"cultural","target_content":"Canal 11","playback_mode":"live","accent_color":"#00838F","voice_aliases":["canal once","canal 11"]},
+        {"id":"canal_22","title":"Canal 22","subtitle":"Cultura","plugin_source":"cultural","target_content":"Canal 22","playback_mode":"live","accent_color":"#2E7D32","voice_aliases":["canal 22"]}
+      ]
+    },
+    {
+      "id": "cine_clasico",
+      "title": "🎬 CINE CLÁSICO Y ÉPOCA DE ORO",
+      "items": [
+        {"id":"pedro_infante","title":"Pedro Infante","subtitle":"Cine mexicano clásico","plugin_source":"archive","target_content":"Pedro Infante","playback_mode":"search","accent_color":"#6D4C41","voice_aliases":["pedro infante","películas de Pedro Infante"]},
+        {"id":"cantinflas","title":"Cantinflas","subtitle":"Comedia clásica","plugin_source":"archive","target_content":"Cantinflas","playback_mode":"search","accent_color":"#5D4037","voice_aliases":["cantinflas"]},
+        {"id":"jorge_negrete","title":"Jorge Negrete","subtitle":"Cine mexicano clásico","plugin_source":"archive","target_content":"Jorge Negrete","playback_mode":"search","accent_color":"#455A64","voice_aliases":["jorge negrete"]},
+        {"id":"cine_oro","title":"Época de Oro","subtitle":"Películas clásicas","plugin_source":"archive","target_content":"cine de oro mexicano","playback_mode":"search","accent_color":"#8D6E63","voice_aliases":["cine de oro","películas viejas"]}
+      ]
+    },
+    {
+      "id": "entretenimiento",
+      "title": "⭐ SERIES, NOVELAS Y ENTRETENIMIENTO",
+      "items": [
+        {"id":"novelas","title":"Telenovelas","subtitle":"Novelas y dramas","plugin_source":"novelas","target_content":"telenovelas_list","playback_mode":"menu","accent_color":"#AD1457","voice_aliases":["novelas","telenovelas"]},
+        {"id":"documentales","title":"Documentales","subtitle":"Historia y naturaleza","plugin_source":"docs","target_content":"documentales_list","playback_mode":"menu","accent_color":"#00695C","voice_aliases":["documentales","naturaleza","historia"]},
+        {"id":"retro","title":"Series retro","subtitle":"Series de antes","plugin_source":"retro-tv","target_content":"retro_list","playback_mode":"menu","accent_color":"#283593","voice_aliases":["series retro","series viejas"]},
+        {"id":"comedia","title":"Comedia","subtitle":"Para reír","plugin_source":"comedia","target_content":"comedia_list","playback_mode":"menu","accent_color":"#F9A825","voice_aliases":["comedia","humor"]},
+        {"id":"musica","title":"Música del recuerdo","subtitle":"Boleros y rancheras","plugin_source":"audios","target_content":"musica_recuerdo","playback_mode":"stream","accent_color":"#4527A0","voice_aliases":["música del recuerdo","boleros","rancheras"]}
+      ]
+    },
+    {
+      "id": "historial",
+      "title": "▶️ HISTORIAL RECIENTE",
+      "dynamic_history": true,
+      "items": [
+        {"id":"muestra_historial","title":"Explorar contenido","subtitle":"Abre Kino TV para buscar","plugin_source":"xuper","target_content":"contenido recomendado","playback_mode":"search","accent_color":"#37474F","sample":true}
+      ]
+    }
+  ]
+}
