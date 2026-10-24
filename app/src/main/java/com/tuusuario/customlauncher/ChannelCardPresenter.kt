@@ -74,7 +74,7 @@ class ChannelCardPresenter(
                 }
 
                 override fun onResourceReady(
-                    resource: Drawable?,
+                    resource: Drawable,
                     model: Any?,
                     target: Target<Drawable>,
                     dataSource: DataSource,
