@@ -64,7 +64,7 @@ class ChannelCardPresenter(
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?,
-                    model: Any?,
+                    model: Any,
                     target: Target<Drawable>,
                     isFirstResource: Boolean
                 ): Boolean {
