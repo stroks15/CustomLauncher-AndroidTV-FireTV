@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  AndroidManifest.xml — Custom Launcher para Android TV / Fire TV (Fire OS)
+
+  Puntos clave:
+  • Categorías HOME + DEFAULT + LEANBACK_LAUNCHER → el sistema lo reconoce como pantalla de inicio de TV.
+  • Categoría LAUNCHER (filtro aparte)           → aparece también en la lista de apps de Fire OS.
+  • Filtros SEARCH y MEDIA_PLAY_FROM_SEARCH + <meta-data android.app.searchable>
+                                                 → declaración del SearchManager para recibir dictado por voz.
+  • QUERY_ALL_PACKAGES                           → necesario (Android 11+) para que
+                                                   packageManager.getInstalledApplications() liste TODAS las apps.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Hardware: en Fire Stick/Android TV no hay pantalla táctil; leanback no obligatorio para instalar en Fire OS -->
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+
+    <!-- Logotipos por URL y (opcional) sincronización con Kino TV -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Lista completa de apps instaladas para el selector de la Fila 0 -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <!-- Visibilidad de paquetes (complemento de QUERY_ALL_PACKAGES) -->
+    <queries>
+        <package android:name="com.arkiv.player.light" />
+        <provider android:authorities="com.arkiv.player.light.provider" />
+        <intent>
+            <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:banner="@drawable/ic_banner"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:theme="@style/Theme.CustomLauncher">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="stateAlwaysHidden">
+
+            <!-- 1) Pantalla de inicio (botón HOME del control remoto) -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+
+            <!-- 2) Aparecer en la lista de aplicaciones (Fire OS / lanzadores convencionales) -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- 3) Búsqueda por voz (ACTION_SEARCH → onNewIntent()/onCreate()) -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- 4) "Reproduce X" de asistentes de voz → se normaliza a ACTION_SEARCH en MainActivity -->
+            <intent-filter>
+                <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- Declaración del SearchManager -->
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+    </application>
+</manifest>
