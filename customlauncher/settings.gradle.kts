@@ -1,4 +1,6 @@
+// ============================================================================
 // settings.gradle.kts — Configuración raíz del proyecto "Custom Launcher TV"
+// ============================================================================
 pluginManagement {
     repositories {
         google()
@@ -6,6 +8,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -13,5 +16,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "CustomLauncher"
 include(":app")
