@@ -65,7 +65,7 @@ class ChannelCardPresenter(
                 override fun onLoadFailed(
                     e: GlideException?,
                     model: Any?,
-                    target: Target<Drawable>?,
+                    target: Target<Drawable>,
                     isFirstResource: Boolean
                 ): Boolean {
                     // Logotipo inexistente o sin red → nombre en grande
@@ -76,8 +76,8 @@ class ChannelCardPresenter(
                 override fun onResourceReady(
                     resource: Drawable?,
                     model: Any?,
-                    target: Target<Drawable>?,
-                    dataSource: DataSource?,
+                    target: Target<Drawable>,
+                    dataSource: DataSource,
                     isFirstResource: Boolean
                 ): Boolean = false
             })
