@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import org.json.JSONArray
+import com.tuusuario.customlauncher.PluginRegistry
 import org.json.JSONObject
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
@@ -25,6 +26,11 @@ object EpgRepository {
 
     fun currentProgram(channelId: String?): String? =
         channelId?.takeIf { it.isNotBlank() }?.let(currentByChannel::get)
+
+    fun refreshConfigured(context: Context) {
+        val feed = PluginRegistry.epgFeedUrl(context)
+        if (feed.isNotBlank()) refresh(context.applicationContext, feed)
+    }
 
     /** Descarga y parsea fuera del hilo UI. Sólo acepta URL HTTP(S) configurada explícitamente. */
     fun refresh(context: Context, feedUrl: String) {
