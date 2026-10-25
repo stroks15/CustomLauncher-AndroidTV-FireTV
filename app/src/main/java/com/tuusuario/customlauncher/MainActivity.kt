@@ -141,36 +141,6 @@ class MainActivity : FragmentActivity() {
         abrirContenido(item)
     }
 
-    private fun lanzarKinoPlugin(
-        intent: Intent,
-        source: String,
-        target: String,
-        mode: String,
-        titulo: String? = null,                    // [CAMBIO 4] datos opcionales para "Continuar viendo"
-        extras: Map<String, String> = emptyMap(),
-        acento: Int? = null,
-        logo: String? = null
-    ) {
-        // [CAMBIO 4] Películas/series (no canales en vivo ni música) → fila "Continuar viendo"
-        if (ContinuarViendo.aplica(source, mode) && AppUtils.estaInstalada(packageManager, KINO_PACKAGE)) {
-            ContinuarViendo.registrar(
-                this,
-                titulo ?: ContinuarViendo.tituloLegible(source, target),
-                source, target, mode, extras, acento, logo
-            )
-        }
-        intent.putExtra("plugin_source", source)
-        intent.putExtra("target_content", target)
-        intent.putExtra("playback_mode", mode)
-        try {
-            startActivity(intent)
-            Log.i(TAG, "Intent despachado con éxito: Source=$source, Target=$target, Mode=$mode") // [CAMBIO 1]
-        } catch (e: Exception) {
-            Log.e(TAG, "Error al lanzar Kino TV. ¿Está instalada la app?: ${e.message}") // [CAMBIO 1]
-            abrirKinoConExtras(intent) // [CAMBIO 3] plan B: abrir Kino por su icono llevando los mismos extras
-        }
-    }
-
     // =========================================================================
     //  EXTENSIONES DEL MODO HÍBRIDO (Alexa / Google Assistant / dictado propio)
     // =========================================================================
