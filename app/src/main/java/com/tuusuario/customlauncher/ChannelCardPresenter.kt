@@ -10,6 +10,7 @@ import androidx.leanback.widget.Presenter
 import com.bumptech.glide.Glide
 import com.tuusuario.customlauncher.epg.EpgRepository
 import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
@@ -65,6 +66,8 @@ class ChannelCardPresenter(
         mostrarLogo(logo, textoLogo, titulo)
         Glide.with(logo.context.applicationContext)
             .load(rutaParaGlide(contenido.logo))
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .skipMemoryCache(false)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?,
