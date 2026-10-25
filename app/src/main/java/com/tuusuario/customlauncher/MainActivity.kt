@@ -183,6 +183,7 @@ class MainActivity : FragmentActivity() {
     /** Reproduce en el motor Media3 integrado; no delega el video a otra aplicación. */
     fun abrirContenido(item: ContentItem) {
         val streamUrl = item.extras["stream_url"]?.trim().takeUnless { it.isNullOrBlank() }
+            ?: PluginRegistry.defaultStreamUrl(this, item.pluginSource)
             ?: item.targetContent.takeIf { it.startsWith("https://") || it.startsWith("http://") }
         if (streamUrl.isNullOrBlank()) {
             aviso("«${item.title}» no tiene stream_url configurada. Añade una URL HLS/DASH autorizada al catálogo.")
