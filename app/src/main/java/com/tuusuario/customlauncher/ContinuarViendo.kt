@@ -35,7 +35,11 @@ object ContinuarViendo {
     const val EXTRA_CONTINUAR = "continue_watching"
 
     /** Plugins de Kino TV que reproducen películas / series / documentales (no en vivo, no música). */
-    val PLUGINS_DE_VIDEO = setOf("archive", "novelas", "retro-tv", "comedia", "docs")
+    val PLUGINS_DE_VIDEO = setOf(
+        "archive", "novelas", "retro-tv", "comedia", "docs",
+        "cine-oro-mexicano", "retroseries-latam", "doramaslatino-api",
+        "vod-latino-releases", "navidad-total"
+    )
 
     private val NOMBRES_DE_MENU = mapOf(
         "novelas" to "Telenovelas",
