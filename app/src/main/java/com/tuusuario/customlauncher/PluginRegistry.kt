@@ -19,7 +19,7 @@ object PluginRegistry {
 
     fun definitions(context: Context): List<PluginDefinition> = runCatching {
         val root = JSONObject(context.assets.open(FILE).bufferedReader(Charsets.UTF_8).use { it.readText() })
-        val array = root.optJSONArray("plugins") ?: return emptyList()
+        val array = root.optJSONArray("plugins") ?: org.json.JSONArray()
         (0 until array.length()).mapNotNull { i ->
             val item = array.optJSONObject(i) ?: return@mapNotNull null
             PluginDefinition(
