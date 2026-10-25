@@ -26,24 +26,10 @@ import com.tuusuario.customlauncher.utils.VoiceCommandValidator
 import com.tuusuario.customlauncher.player.PlayerActivity
 
 /**
- * MainActivity — Pantalla de inicio (HOME) del Custom Launcher.
- *
- * Responsabilidades:
- *  1. Alojar el HomeFragment (filas Leanback).
- *  2. Procesar y enrutar los comandos de voz (SpeechRecognitionRouter) hacia Kino TV.
- *  3. Lanzar apps (Fila 0), mostrar el selector de apps y abrir contenidos de Kino TV.
- *  4. Barra superior (nombre del launcher + accesos directos a Ajustes y WiFi + hora).
- *  5. Registrar automáticamente películas/series abiertas para la fila "Continuar viendo".
- *
- * NOTA SOBRE EL SCRIPT DE VOZ:
- *  El bloque marcado como "SPEECH RECOGNITION ROUTER" conserva íntegras las reglas
- *  de enrutamiento solicitadas. Los únicos cambios respecto al texto original son:
- *    [CAMBIO 1] "\$query" → "$query" (el "\$" escapado imprimía el texto literal "$query").
- *    [CAMBIO 2] onCreate()/onNewIntent() llaman a despacharVoz() (que a su vez llama a
- *               handleIntent()) para normalizar intents de asistentes y evitar cierres inesperados.
- *    [CAMBIO 3] una línea en el catch de lanzarKinoPlugin(): abrirKinoConExtras() como plan B.
- *    [CAMBIO 4] lanzarKinoPlugin() recibe parámetros opcionales (título, extras…) y registra la
- *               película/serie en "Continuar viendo". Las reglas de voz no se modificaron.
+ * Launcher Android TV / Fire TV.
+ * Los comandos de voz se aceptan sólo si terminan en "dexter" y se resuelven contra
+ * recomendaciones_launcher.json. El vídeo se reproduce con Media3 cuando hay una URL
+ * HLS/DASH HTTP(S) explícita; no se inventan endpoints ni se depende de un reproductor externo.
  */
 class MainActivity : FragmentActivity() {
 
