@@ -1,14 +1,54 @@
 {
   "epg_feed_url": "",
   "plugins": [
-    {"id":"xuper","name":"Xuper TV Latino Premium","kind":"direct_hls_dash","enabled":false,"stream_url":""},
-    {"id":"iptv-org-mx-latam","name":"IPTV Org MX & Latam","kind":"direct_hls_dash","enabled":false,"stream_url":""},
-    {"id":"pluto-vix-free","name":"Pluto TV & ViX Free","kind":"official_or_authorized_feed","enabled":false,"stream_url":""},
-    {"id":"doramaslatino-api","name":"DoramasLatino API Plugin","kind":"api_or_direct_hls_dash","enabled":false,"stream_url":""},
-    {"id":"cine-oro-mexicano","name":"Cine de Oro Mexicano Library","kind":"public_domain_or_licensed_vod","enabled":false,"stream_url":""},
-    {"id":"retroseries-latam","name":"RetroSeries Latam","kind":"licensed_vod","enabled":false,"stream_url":""},
-    {"id":"vod-latino-releases","name":"VOD Latino Releases & Realitys","kind":"licensed_vod","enabled":false,"stream_url":""},
-    {"id":"navidad-total","name":"Navidad Total","kind":"licensed_vod","enabled":false,"stream_url":""}
+    {
+      "id": "xuper",
+      "name": "Xuper TV Latino Premium",
+      "kind": "direct_hls_dash",
+      "enabled": false
+    },
+    {
+      "id": "iptv-org-mx-latam",
+      "name": "IPTV Org MX & Latam",
+      "kind": "direct_hls_dash",
+      "enabled": false
+    },
+    {
+      "id": "pluto-vix-free",
+      "name": "Pluto TV & ViX Free",
+      "kind": "official_or_authorized_feed",
+      "enabled": false
+    },
+    {
+      "id": "doramaslatino-api",
+      "name": "DoramasLatino API Plugin",
+      "kind": "api_or_direct_hls_dash",
+      "enabled": false
+    },
+    {
+      "id": "cine-oro-mexicano",
+      "name": "Cine de Oro Mexicano Library",
+      "kind": "public_domain_or_licensed_vod",
+      "enabled": false
+    },
+    {
+      "id": "retroseries-latam",
+      "name": "RetroSeries Latam",
+      "kind": "licensed_vod",
+      "enabled": false
+    },
+    {
+      "id": "vod-latino-releases",
+      "name": "VOD Latino Releases & Realitys",
+      "kind": "licensed_vod",
+      "enabled": false
+    },
+    {
+      "id": "navidad-total",
+      "name": "Navidad Total",
+      "kind": "licensed_vod",
+      "enabled": false
+    }
   ],
-  "notes": "Completa stream_url con URLs HLS/DASH que tengas derecho a usar. No se incluyen endpoints ni streams inventados."
+  "notes": "Configura extras.stream_url en cada tarjeta de recomendaciones_launcher.json con una URL HLS/DASH autorizada. No se incluyen endpoints ni streams inventados."
 }
