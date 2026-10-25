@@ -188,6 +188,12 @@ class MainActivity : FragmentActivity() {
             aviso("«${item.title}» no tiene stream_url configurada. Añade una URL HLS/DASH autorizada al catálogo.")
             return
         }
+        if (ContinuarViendo.aplica(item.pluginSource, item.playbackMode)) {
+            ContinuarViendo.registrar(
+                this, item.title, item.pluginSource, item.targetContent, item.playbackMode,
+                item.extras, item.accentColor, item.logo
+            )
+        }
         startActivity(Intent(this, PlayerActivity::class.java).apply {
             putExtra(PlayerActivity.EXTRA_STREAM_URL, streamUrl)
             putExtra(PlayerActivity.EXTRA_TITLE, item.title)
