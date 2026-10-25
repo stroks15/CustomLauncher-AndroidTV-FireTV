@@ -168,6 +168,76 @@
             "unam"
           ],
           "extras": {}
+        },
+        {
+          "id": "canal_2",
+          "title": "Canal 2",
+          "subtitle": "Televisión abierta · configura stream_url",
+          "plugin_source": "xuper",
+          "target_content": "Canal 2",
+          "playback_mode": "live",
+          "accent_color": "#1565C0",
+          "voice_aliases": [
+            "canal 2",
+            "canal dos"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "canal_4",
+          "title": "Canal 4",
+          "subtitle": "Televisión abierta · configura stream_url",
+          "plugin_source": "xuper",
+          "target_content": "Canal 4",
+          "playback_mode": "live",
+          "accent_color": "#00838F",
+          "voice_aliases": [
+            "canal 4",
+            "canal cuatro"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "canal_6",
+          "title": "Canal 6",
+          "subtitle": "Televisión abierta · configura stream_url",
+          "plugin_source": "xuper",
+          "target_content": "Canal 6",
+          "playback_mode": "live",
+          "accent_color": "#6A1B9A",
+          "voice_aliases": [
+            "canal 6",
+            "canal seis"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "canal_13",
+          "title": "Canal 13",
+          "subtitle": "Televisión abierta · configura stream_url",
+          "plugin_source": "xuper",
+          "target_content": "Canal 13",
+          "playback_mode": "live",
+          "accent_color": "#2E7D32",
+          "voice_aliases": [
+            "canal 13",
+            "canal trece"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "canal_13_una_hora",
+          "title": "Canal 13 · 1 hora antes",
+          "subtitle": "Señal con retraso · configura stream_url",
+          "plugin_source": "xuper",
+          "target_content": "Canal 13 · 1 hora antes",
+          "playback_mode": "live",
+          "accent_color": "#558B2F",
+          "voice_aliases": [
+            "canal 13 menos una hora",
+            "canal 13 una hora antes"
+          ],
+          "extras": {}
         }
       ]
     },
@@ -179,7 +249,7 @@
           "id": "pedro_infante",
           "title": "Pedro Infante",
           "subtitle": "Cine mexicano clásico",
-          "plugin_source": "archive",
+          "plugin_source": "cine-oro-mexicano",
           "target_content": "Pedro Infante",
           "playback_mode": "search",
           "accent_color": "#6D4C41",
@@ -192,7 +262,7 @@
           "id": "cantinflas",
           "title": "Cantinflas",
           "subtitle": "Comedia clásica",
-          "plugin_source": "archive",
+          "plugin_source": "cine-oro-mexicano",
           "target_content": "Cantinflas",
           "playback_mode": "search",
           "accent_color": "#5D4037",
@@ -204,7 +274,7 @@
           "id": "jorge_negrete",
           "title": "Jorge Negrete",
           "subtitle": "Cine mexicano clásico",
-          "plugin_source": "archive",
+          "plugin_source": "cine-oro-mexicano",
           "target_content": "Jorge Negrete",
           "playback_mode": "search",
           "accent_color": "#455A64",
@@ -216,7 +286,7 @@
           "id": "cine_oro",
           "title": "Época de Oro",
           "subtitle": "Películas clásicas",
-          "plugin_source": "archive",
+          "plugin_source": "cine-oro-mexicano",
           "target_content": "cine de oro mexicano",
           "playback_mode": "search",
           "accent_color": "#8D6E63",
@@ -531,7 +601,7 @@
           "id": "retro",
           "title": "Series retro",
           "subtitle": "Series de antes",
-          "plugin_source": "retro-tv",
+          "plugin_source": "retroseries-latam",
           "target_content": "retro_list",
           "playback_mode": "menu",
           "accent_color": "#283593",
