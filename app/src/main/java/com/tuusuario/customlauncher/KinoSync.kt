@@ -50,16 +50,29 @@ object KinoSync {
     /** Broadcast interno (sólo dentro de esta app) que avisa a la UI que el caché cambió. */
     const val ACCION_CACHE_ACTUALIZADA = "com.tuusuario.customlauncher.HISTORIAL_ACTUALIZADO"
 
-    /** Programa la sincronización periódica y lanza una inmediata. Es seguro llamarlo varias veces. */
+    /**
+     * No programa consultas hasta confirmar un ContentProvider real de Kino.
+     * La autoridad antigua no existe en el dispositivo probado y generaba errores cada 15 min.
+     */
     fun programar(contexto: Context) {
-        val gestor = WorkManager.getInstance(contexto)
-        val periodica = PeriodicWorkRequestBuilder<KinoSyncWorker>(15, TimeUnit.MINUTES).build()
-        gestor.enqueueUniquePeriodicWork(NOMBRE_TRABAJO, ExistingPeriodicWorkPolicy.KEEP, periodica)
-        gestor.enqueue(OneTimeWorkRequestBuilder<KinoSyncWorker>().build())
+        WorkManager.getInstance(contexto).cancelUniqueWork(NOMBRE_TRABAJO)
+        Log.i(TAG, "Sincronización automática desactivada: el proveedor de Kino no está verificado")
     }
 
-    /** Lee el provider de Kino TV y guarda un caché local. Devuelve true si se obtuvieron datos. */
+    /**
+     * Contrato aún no verificado. No consultar una URI inventada ni declarar éxito ficticio.
+     * Se conserva el caché existente, si lo hubiera, hasta implementar una fuente real.
+     */
     fun sincronizar(contexto: Context): Boolean {
+        Log.d(TAG, "Historial de Kino no sincronizado: no hay un proveedor confirmado")
+        return false
+    }
+
+    /*
+     * Implementación anterior basada en un contrato supuesto, conservada en el historial Git.
+     * No usar hasta que Kino documente o exponga una interfaz compatible.
+     */
+    private fun sincronizarProveedorNoVerificado(contexto: Context): Boolean {
         return try {
             val cursor = contexto.contentResolver.query(KinoContract.URI_HISTORIAL, null, null, null, null)
             if (cursor == null) {
