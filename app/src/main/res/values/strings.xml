@@ -14,8 +14,8 @@
     <string name="sin_dictado">Este equipo no tiene dictado por voz. Usa el botón del micrófono de tu control remoto.</string>
     <string name="kino_no_instalada">Kino TV no está instalada en este equipo.</string>
     <string name="no_se_pudo_abrir">No se pudo abrir la opción elegida.</string>
-    <string name="hint_busqueda">Di el canal o la película que quieres ver</string>
-    <string name="prompt_voz">Di el canal o la película que quieres ver</string>
+    <string name="hint_busqueda">Di el canal o la película y termina con dexter</string>
+    <string name="prompt_voz">Di el canal o la película y termina con dexter</string>
     <string name="dialogo_titulo">Elige la aplicación para el botón %1$d</string>
     <string name="cancelar">Cancelar</string>
 </resources>
