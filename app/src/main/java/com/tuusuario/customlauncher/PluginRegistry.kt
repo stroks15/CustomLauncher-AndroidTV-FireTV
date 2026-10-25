@@ -8,8 +8,7 @@ data class PluginDefinition(
     val id: String,
     val name: String,
     val kind: String,
-    val enabled: Boolean,
-    val streamUrl: String
+    val enabled: Boolean
 )
 
 /** Registro declarativo de plugins; no scrapea sitios ni inventa URLs de reproducción. */
@@ -26,15 +25,10 @@ object PluginRegistry {
                 id = item.optString("id"),
                 name = item.optString("name"),
                 kind = item.optString("kind"),
-                enabled = item.optBoolean("enabled", false),
-                streamUrl = item.optString("stream_url")
+                enabled = item.optBoolean("enabled", false)
             )
         }
     }.onFailure { Log.w(TAG, "No se pudo leer $FILE: ${it.message}") }.getOrDefault(emptyList())
-
-    fun defaultStreamUrl(context: Context, pluginId: String): String? =
-        definitions(context).firstOrNull { it.id == pluginId && it.enabled }
-            ?.streamUrl?.takeIf { it.startsWith("https://") || it.startsWith("http://") }
 
     fun epgFeedUrl(context: Context): String = runCatching {
         val root = JSONObject(context.assets.open(FILE).bufferedReader(Charsets.UTF_8).use { it.readText() })
