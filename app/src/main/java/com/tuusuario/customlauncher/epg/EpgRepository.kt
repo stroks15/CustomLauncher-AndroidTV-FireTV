@@ -23,6 +23,8 @@ object EpgRepository {
     private const val TAG = "EpgRepository"
     private val executor = Executors.newSingleThreadExecutor()
     private val currentByChannel = ConcurrentHashMap<String, String>()
+    @Volatile private var lastRefreshUrl = ""
+    @Volatile private var lastRefreshAt = 0L
 
     fun currentProgram(channelId: String?): String? =
         channelId?.takeIf { it.isNotBlank() }?.let(currentByChannel::get)
@@ -34,6 +36,12 @@ object EpgRepository {
 
     /** Descarga y parsea fuera del hilo UI. Sólo acepta URL HTTP(S) configurada explícitamente. */
     fun refresh(context: Context, feedUrl: String) {
+        val now = System.currentTimeMillis()
+        synchronized(this) {
+            if (feedUrl == lastRefreshUrl && now - lastRefreshAt < 15 * 60 * 1000L) return
+            lastRefreshUrl = feedUrl
+            lastRefreshAt = now
+        }
         val uri = runCatching { Uri.parse(feedUrl) }.getOrNull() ?: return
         if (uri.scheme !in setOf("https", "http") || uri.host.isNullOrBlank()) {
             Log.w(TAG, "Feed EPG ignorado: URL inválida")
