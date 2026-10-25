@@ -51,4 +51,15 @@
         android:textColor="@color/texto"
         android:textSize="24sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/subtitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingTop="2dp"
+        android:textColor="@color/texto"
+        android:textSize="16sp" />
 </com.tuusuario.customlauncher.BigCardView>
