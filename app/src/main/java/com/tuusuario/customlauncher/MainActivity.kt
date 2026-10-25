@@ -22,30 +22,17 @@ import java.util.Locale
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import com.tuusuario.customlauncher.utils.VoiceCommandValidator
+import com.tuusuario.customlauncher.player.PlayerActivity
 
 /**
- * MainActivity — Pantalla de inicio (HOME) del Custom Launcher.
- *
- * Responsabilidades:
- *  1. Alojar el HomeFragment (filas Leanback).
- *  2. Procesar y enrutar los comandos de voz (SpeechRecognitionRouter) hacia Kino TV.
- *  3. Lanzar apps (Fila 0), mostrar el selector de apps y abrir contenidos de Kino TV.
- *  4. Barra superior (nombre del launcher + accesos directos a Ajustes y WiFi + hora).
- *  5. Registrar automáticamente películas/series abiertas para la fila "Continuar viendo".
- *
- * NOTA SOBRE EL SCRIPT DE VOZ:
- *  El bloque marcado como "SPEECH RECOGNITION ROUTER" conserva íntegras las reglas
- *  de enrutamiento solicitadas. Los únicos cambios respecto al texto original son:
- *    [CAMBIO 1] "\$query" → "$query" (el "\$" escapado imprimía el texto literal "$query").
- *    [CAMBIO 2] onCreate()/onNewIntent() llaman a despacharVoz() (que a su vez llama a
- *               handleIntent()) para normalizar intents de asistentes y evitar cierres inesperados.
- *    [CAMBIO 3] una línea en el catch de lanzarKinoPlugin(): abrirKinoConExtras() como plan B.
- *    [CAMBIO 4] lanzarKinoPlugin() recibe parámetros opcionales (título, extras…) y registra la
- *               película/serie en "Continuar viendo". Las reglas de voz no se modificaron.
+ * Launcher Android TV / Fire TV.
+ * Los comandos de voz se aceptan sólo si terminan en "dexter" y se resuelven contra
+ * recomendaciones_launcher.json. El vídeo se reproduce con Media3 cuando hay una URL
+ * HLS/DASH HTTP(S) explícita; no se inventan endpoints ni se depende de un reproductor externo.
  */
 class MainActivity : FragmentActivity() {
 
-    private val KINO_PACKAGE = "com.arkiv.player.light"
     private val TAG = "CustomLauncherVoice"
 
     // Preferencias persistentes de las 4 apps de la Fila 0
@@ -78,8 +65,6 @@ class MainActivity : FragmentActivity() {
                 .replace(R.id.contenedor_home, HomeFragment(), ETIQUETA_HOME)
                 .commit()
         }
-        // Sincronización periódica en segundo plano con Kino TV (historial de YouTube)
-        KinoSync.programar(applicationContext)
         despacharVoz(intent) // [CAMBIO 2] (original: handleIntent(intent))
     }
 
@@ -98,12 +83,16 @@ class MainActivity : FragmentActivity() {
     // =========================================================================
 
     private fun handleIntent(intent: Intent?) {
-        if (intent == null) return
-        if (Intent.ACTION_SEARCH == intent.action) {
-            val query = intent.getStringExtra(android.app.SearchManager.QUERY) ?: ""
-            Log.i(TAG, "Voz capturada en control remoto: $query") // [CAMBIO 1]
-            enrutarComandoVoz(query)
+        if (intent == null || intent.action != Intent.ACTION_SEARCH) return
+        val raw = intent.getStringExtra(android.app.SearchManager.QUERY).orEmpty()
+        // La frase de activación se exige para órdenes de voz recibidas por el sistema.
+        val command = VoiceCommandValidator.validateAndCleanCommand(raw)
+        if (command == null) {
+            Log.w(TAG, "Orden de voz ignorada: sufijo de activación ausente")
+            return
         }
+        Log.i(TAG, "Orden de voz validada")
+        enrutarComandoVoz(command)
     }
 
     private fun normalizarTexto(texto: String): String {
@@ -115,89 +104,27 @@ class MainActivity : FragmentActivity() {
             .trim()
     }
 
+    /**
+     * Resuelve el texto únicamente contra el catálogo local. La reproducción directa requiere
+     * que el elemento tenga extras.stream_url con una URL HTTP(S) autorizada/configurada.
+     */
     private fun enrutarComandoVoz(query: String) {
-        val limpia = normalizarTexto(query)
-        val launchIntent = Intent(Intent.ACTION_VIEW)
-        launchIntent.`package` = KINO_PACKAGE
-        launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-
-        when {
-            // 1. Mapeo automático a Plugin Xuper TV (Televisión Abierta Mexicana)
-            limpia.contains("estrellas") -> lanzarKinoPlugin(launchIntent, "xuper", "Canal de las Estrellas", "live")
-            limpia.contains("canal 5") || limpia.contains("canal cinco") || limpia.contains("pon el 5") -> lanzarKinoPlugin(launchIntent, "xuper", "Canal 5", "live")
-            limpia.contains("n+") || limpia.contains("n mas") -> lanzarKinoPlugin(launchIntent, "xuper", "Canal N+", "live")
-            limpia.contains("multimedios") -> lanzarKinoPlugin(launchIntent, "xuper", "Canal Multimedios de la CDMX", "live")
-            limpia.contains("canal 7") || limpia.contains("canal siete") -> lanzarKinoPlugin(launchIntent, "xuper", "Canal 7", "live")
-            limpia.contains("azteca uno") && !limpia.contains("hora") -> lanzarKinoPlugin(launchIntent, "xuper", "Canal Azteca Uno", "live")
-            limpia.contains("gourmet") -> lanzarKinoPlugin(launchIntent, "xuper", "Canal El Gourmet", "live")
-
-            // 2. Mapeo automático a Plugin Pluto TV (Retraso Horario y Religioso)
-            limpia.contains("enlace") -> lanzarKinoPlugin(launchIntent, "pluto", "Canal Enlace", "live")
-            limpia.contains("azteca") && (limpia.contains("menos una hora") || limpia.contains("menos 1 hora") || limpia.contains("1 hora antes")) -> {
-                lanzarKinoPlugin(launchIntent, "pluto", "Azteca Uno -1 Hora", "live")
-            }
-
-            // 3. Mapeo automático a Culturales y Estatales
-            limpia.contains("canal 11") || limpia.contains("canal once") -> lanzarKinoPlugin(launchIntent, "cultural", "Canal 11", "live")
-            limpia.contains("canal 22") || limpia.contains("canal veintidos") -> lanzarKinoPlugin(launchIntent, "cultural", "Canal 22", "live")
-            limpia.contains("tv unam") || limpia.contains("unam") -> lanzarKinoPlugin(launchIntent, "cultural", "TV UNAM", "live")
-
-            // 4. Mapeo automático a Cine de Oro y Clásicos (Plugin Internet Archive)
-            limpia.contains("pedro infante") || limpia.contains("cantinflas") || limpia.contains("jorge negrete") || limpia.contains("cine de oro") || limpia.contains("peliculas viejas") -> {
-                lanzarKinoPlugin(launchIntent, "archive", query.replace("ver", "").replace("pon", "").trim(), "search")
-            }
-
-            // 5. Mapeo a los Nuevos Plugins de Entretenimiento
-            limpia.contains("novela") || limpia.contains("telenovela") || limpia.contains("drama") -> lanzarKinoPlugin(launchIntent, "novelas", "telenovelas_list", "menu")
-            limpia.contains("documental") || limpia == "historia" || limpia.contains(" historia ") || limpia.contains("naturaleza") -> lanzarKinoPlugin(launchIntent, "docs", "documentales_list", "menu")
-            limpia.contains("serie vieja") || limpia.contains("retro") || limpia.contains("series de antes") -> lanzarKinoPlugin(launchIntent, "retro-tv", "retro_list", "menu")
-            limpia.contains("comedia") || limpia.contains("risa") || limpia.contains("humor") -> lanzarKinoPlugin(launchIntent, "comedia", "comedia_list", "menu")
-            limpia.contains("regional") || limpia.contains("canal del estado") -> lanzarKinoPlugin(launchIntent, "regionales", "regionales_list", "menu")
-            limpia.contains("musica") || limpia.contains("bolero") || limpia.contains("ranchera") -> lanzarKinoPlugin(launchIntent, "audios", "musica_recuerdo", "stream")
-
-            // 6. Historial continuo de YouTube / Shorts (plugin shorts-yt)
-            (limpia.contains("youtube") && (limpia.contains("historial") || limpia.contains("visto") || limpia.contains("videos"))) ||
-                limpia.contains("shorts") || limpia.contains("continuar viendo") ->
-                lanzarKinoPlugin(launchIntent, "shorts-yt", "historial_youtube", "resume")
-
-            // Fallback: Si no coincide, manda el texto crudo a la búsqueda general de Kino
-            else -> {
-                launchIntent.putExtra("action", "global_search")
-                launchIntent.putExtra("search_query", query)
-                startActivity(launchIntent)
-                Log.d(TAG, "Comando genérico. Invocando búsqueda global de Kino para: $query") // [CAMBIO 1]
+        val command = normalizarTexto(query)
+            .replace(Regex("^(abre|pon|reproduce|reproducir|busca|buscar|quiero ver|ponme|dame)\\s+"), "")
+            .trim()
+        val catalog = LauncherContent.cargarFilas(this).flatMap { it.items }
+        val item = catalog.firstOrNull { candidate ->
+            val names = listOf(candidate.title) + candidate.voiceAliases
+            names.any { alias ->
+                val normalizedAlias = normalizarTexto(alias)
+                command == normalizedAlias || command.endsWith(" " + normalizedAlias)
             }
         }
-    }
-
-    private fun lanzarKinoPlugin(
-        intent: Intent,
-        source: String,
-        target: String,
-        mode: String,
-        titulo: String? = null,                    // [CAMBIO 4] datos opcionales para "Continuar viendo"
-        extras: Map<String, String> = emptyMap(),
-        acento: Int? = null,
-        logo: String? = null
-    ) {
-        // [CAMBIO 4] Películas/series (no canales en vivo ni música) → fila "Continuar viendo"
-        if (ContinuarViendo.aplica(source, mode) && AppUtils.estaInstalada(packageManager, KINO_PACKAGE)) {
-            ContinuarViendo.registrar(
-                this,
-                titulo ?: ContinuarViendo.tituloLegible(source, target),
-                source, target, mode, extras, acento, logo
-            )
+        if (item == null) {
+            aviso("No encontré «$query» en el catálogo. Agrega el elemento y su stream_url autorizado al JSON.")
+            return
         }
-        intent.putExtra("plugin_source", source)
-        intent.putExtra("target_content", target)
-        intent.putExtra("playback_mode", mode)
-        try {
-            startActivity(intent)
-            Log.i(TAG, "Intent despachado con éxito: Source=$source, Target=$target, Mode=$mode") // [CAMBIO 1]
-        } catch (e: Exception) {
-            Log.e(TAG, "Error al lanzar Kino TV. ¿Está instalada la app?: ${e.message}") // [CAMBIO 1]
-            abrirKinoConExtras(intent) // [CAMBIO 3] plan B: abrir Kino por su icono llevando los mismos extras
-        }
+        abrirContenido(item)
     }
 
     // =========================================================================
@@ -224,7 +151,10 @@ class MainActivity : FragmentActivity() {
     private fun normalizarIntentDeVoz(origen: Intent?): Intent? {
         if (origen == null) return null
         if (origen.action == MediaStore.INTENT_ACTION_MEDIA_PLAY_FROM_SEARCH) {
-            val frase = origen.getStringExtra(android.app.SearchManager.QUERY) ?: ""
+            val frase = origen.getStringExtra(android.app.SearchManager.QUERY)
+                ?: origen.getStringExtra("android.intent.extra.MEDIA_TITLE")
+                ?: origen.getStringExtra(Intent.EXTRA_TEXT)
+                ?: ""
             return Intent(Intent.ACTION_SEARCH).putExtra(android.app.SearchManager.QUERY, frase)
         }
         return origen
@@ -250,43 +180,24 @@ class MainActivity : FragmentActivity() {
         }
     }
 
-    /** Plan B: abre Kino TV mediante su intent de lanzamiento y le pasa los extras originales. */
-    private fun abrirKinoConExtras(origen: Intent) {
-        val lanzamiento = AppUtils.intentDeLanzamiento(packageManager, KINO_PACKAGE)
-        if (lanzamiento == null) {
-            aviso(getString(R.string.kino_no_instalada))
+    /** Reproduce en el motor Media3 integrado; no delega el video a otra aplicación. */
+    fun abrirContenido(item: ContentItem) {
+        val streamUrl = item.extras["stream_url"]?.trim().takeUnless { it.isNullOrBlank() }
+            ?: item.targetContent.takeIf { it.startsWith("https://") || it.startsWith("http://") }
+        if (streamUrl.isNullOrBlank()) {
+            aviso("«${item.title}» no tiene stream_url configurada. Añade una URL HLS/DASH autorizada al catálogo.")
             return
         }
-        origen.extras?.let { lanzamiento.putExtras(it) }
-        lanzamiento.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        try {
-            startActivity(lanzamiento)
-            Log.i(TAG, "Plan B: Kino TV abierto por su icono con los extras del comando")
-        } catch (e: Exception) {
-            Log.e(TAG, "Plan B falló: ${e.message}")
-            aviso(getString(R.string.no_se_pudo_abrir))
+        if (ContinuarViendo.aplica(item.pluginSource, item.playbackMode)) {
+            ContinuarViendo.registrar(
+                this, item.title, item.pluginSource, item.targetContent, item.playbackMode,
+                item.extras, item.accentColor, item.logo
+            )
         }
-    }
-
-    // =========================================================================
-    //  ACCIONES DE LA INTERFAZ (llamadas desde HomeFragment)
-    // =========================================================================
-
-    /** Abre una tarjeta de contenido (canal, cine, música…) usando los mismos extras que la voz. */
-    fun abrirContenido(item: ContentItem) {
-        val abrir = Intent(Intent.ACTION_VIEW)
-        abrir.`package` = KINO_PACKAGE
-        abrir.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        // Extras adicionales opcionales definidos en el JSON (p. ej. genre=bolero)
-        item.extras.forEach { (clave, valor) -> abrir.putExtra(clave, valor) }
-        // Tarjeta de "Continuar viendo": se avisa a Kino TV que es una reanudación
-        if (item.id.startsWith(ContinuarViendo.PREFIJO_ID)) {
-            abrir.putExtra(ContinuarViendo.EXTRA_CONTINUAR, true)
-        }
-        lanzarKinoPlugin(
-            abrir, item.pluginSource, item.targetContent, item.playbackMode,
-            item.title, item.extras, item.accentColor, item.logo
-        )
+        startActivity(Intent(this, PlayerActivity::class.java).apply {
+            putExtra(PlayerActivity.EXTRA_STREAM_URL, streamUrl)
+            putExtra(PlayerActivity.EXTRA_TITLE, item.title)
+        })
     }
 
     /** Botón central sostenido sobre una tarjeta de "Continuar viendo" → quitarla (ya la terminó). */

@@ -44,4 +44,9 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.9.1")
     // Carga de logotipos de canales (assets o URL)
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    // Reproductor nativo HLS/DASH (sin depender de Kino como motor de reproducción)
+    implementation("androidx.media3:media3-exoplayer:1.4.1")
+    implementation("androidx.media3:media3-exoplayer-hls:1.4.1")
+    implementation("androidx.media3:media3-exoplayer-dash:1.4.1")
+    implementation("androidx.media3:media3-ui:1.4.1")
 }

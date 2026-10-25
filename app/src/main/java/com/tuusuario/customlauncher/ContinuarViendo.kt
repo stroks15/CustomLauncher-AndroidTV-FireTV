@@ -11,14 +11,12 @@ import java.io.File
  * "Continuar viendo": registro local, automático, de las películas y series que la persona abre.
  *
  * CÓMO FUNCIONA (y su límite):
- *  • Cada vez que se abre una película/serie/documental/novela (desde una tarjeta o por voz),
- *    MainActivity.lanzarKinoPlugin() la registra aquí. Los canales en vivo y la música NO se registran.
+ *  • Cada vez que se abre una película/serie/documental/novela con stream_url configurada,
+ *    MainActivity.abrirContenido() la registra aquí. Los canales en vivo y la música NO se registran.
  *  • HomeFragment muestra la lista en la fila "CONTINUAR VIENDO", debajo de los canales en vivo.
- *  • Kino TV no informa al launcher cuánto se vio ni si el video terminó (no hay contrato público),
- *    así que el launcher no puede saber si algo "se terminó". Por eso la tarjeta se queda hasta que
- *    la persona la quita (botón central sostenido → "Ya lo terminé") o hasta que sale de las
- *    últimas [MAX_ELEMENTOS]. Al tocarla se vuelve a abrir la misma entrada en Kino TV con el
- *    extra "continue_watching" = true; si Kino lo entiende, puede reanudar donde se quedó.
+ *  • El launcher no puede saber si un stream remoto terminó. La tarjeta se queda hasta que la
+ *    persona la quita (botón central sostenido → "Ya lo terminé") o sale de los últimos [MAX_ELEMENTOS].
+ *    Al tocarla se reproduce la misma URL configurada por el catálogo.
  */
 object ContinuarViendo {
 
@@ -31,11 +29,13 @@ object ContinuarViendo {
     const val PREFIJO_ID = "continuar:"
     const val SUBTITULO = "Continuar viendo"
 
-    /** Extra que se agrega al intent de Kino TV cuando se reabre desde esta fila. */
-    const val EXTRA_CONTINUAR = "continue_watching"
 
     /** Plugins de Kino TV que reproducen películas / series / documentales (no en vivo, no música). */
-    val PLUGINS_DE_VIDEO = setOf("archive", "novelas", "retro-tv", "comedia", "docs")
+    val PLUGINS_DE_VIDEO = setOf(
+        "archive", "novelas", "retro-tv", "comedia", "docs",
+        "cine-oro-mexicano", "retroseries-latam", "doramaslatino-api",
+        "vod-latino-releases", "navidad-total"
+    )
 
     private val NOMBRES_DE_MENU = mapOf(
         "novelas" to "Telenovelas",

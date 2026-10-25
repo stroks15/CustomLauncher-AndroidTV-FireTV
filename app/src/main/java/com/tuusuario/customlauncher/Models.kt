@@ -11,8 +11,9 @@ data class FavoriteApp(
  * Tarjeta de contenido (canal, cine, música, historial…) leída de recomendaciones_launcher.json
  * o del historial sincronizado con Kino TV.
  *
- * Los tres campos pluginSource / targetContent / playbackMode son exactamente los extras
- * ("plugin_source", "target_content", "playback_mode") que recibe Kino TV.
+ * pluginSource identifica la fuente declarada en plugin_sources.json; targetContent es el
+ * título o URL; playbackMode describe el tipo de contenido. Para reproducir, configura
+ * extras["stream_url"] con una URL HLS/DASH autorizada.
  */
 data class ContentItem(
     val id: String,

@@ -16,6 +16,7 @@ import androidx.leanback.widget.ListRow
 import androidx.leanback.widget.ListRowPresenter
 import androidx.leanback.widget.OnItemViewClickedListener
 import androidx.leanback.widget.RowPresenter
+import com.tuusuario.customlauncher.epg.EpgRepository
 
 /**
  * Pantalla de inicio con la jerarquía completa de filas:
@@ -55,7 +56,11 @@ class HomeFragment : BrowseSupportFragment() {
     /** Se dispara cuando KinoSyncWorker actualiza el caché de historial. */
     private val receptorSync = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            recargarFilasDinamicas()
+            if (intent?.action == EpgRepository.ACTION_EPG_UPDATED) {
+                adaptadoresPorFila.values.forEach { it.notifyItemRangeChanged(0, it.size()) }
+            } else {
+                recargarFilasDinamicas()
+            }
         }
     }
 
@@ -95,7 +100,10 @@ class HomeFragment : BrowseSupportFragment() {
         ContextCompat.registerReceiver(
             requireContext(),
             receptorSync,
-            IntentFilter(KinoSync.ACCION_CACHE_ACTUALIZADA),
+            IntentFilter().apply {
+                addAction(KinoSync.ACCION_CACHE_ACTUALIZADA)
+                addAction(EpgRepository.ACTION_EPG_UPDATED)
+            },
             ContextCompat.RECEIVER_NOT_EXPORTED
         )
     }
@@ -114,6 +122,7 @@ class HomeFragment : BrowseSupportFragment() {
         // Al volver de otra app: reparar defaults (p. ej. instalaron SmartTube) y refrescar historial
         refrescarFavoritas()
         recargarFilasDinamicas()
+        EpgRepository.refreshConfigured(requireContext())
     }
 
     /** Regresa el foco a la Fila 0 (se usa al pulsar HOME). */

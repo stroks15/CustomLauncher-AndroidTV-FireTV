@@ -15,7 +15,36 @@
           "voice_aliases": [
             "estrellas",
             "canal de las estrellas"
-          ]
+          ],
+          "extras": {}
+        },
+        {
+          "id": "canal_2",
+          "title": "Canal 2",
+          "subtitle": "Televisión abierta · configura stream_url",
+          "plugin_source": "xuper",
+          "target_content": "Canal 2",
+          "playback_mode": "live",
+          "accent_color": "#1565C0",
+          "voice_aliases": [
+            "canal 2",
+            "canal dos"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "canal_4",
+          "title": "Canal 4",
+          "subtitle": "Televisión abierta · configura stream_url",
+          "plugin_source": "xuper",
+          "target_content": "Canal 4",
+          "playback_mode": "live",
+          "accent_color": "#00838F",
+          "voice_aliases": [
+            "canal 4",
+            "canal cuatro"
+          ],
+          "extras": {}
         },
         {
           "id": "canal_5",
@@ -28,7 +57,50 @@
           "voice_aliases": [
             "canal cinco",
             "canal 5"
-          ]
+          ],
+          "extras": {}
+        },
+        {
+          "id": "canal_6",
+          "title": "Canal 6",
+          "subtitle": "Televisión abierta · configura stream_url",
+          "plugin_source": "xuper",
+          "target_content": "Canal 6",
+          "playback_mode": "live",
+          "accent_color": "#6A1B9A",
+          "voice_aliases": [
+            "canal 6",
+            "canal seis"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "canal_13",
+          "title": "Canal 13",
+          "subtitle": "Televisión abierta · configura stream_url",
+          "plugin_source": "xuper",
+          "target_content": "Canal 13",
+          "playback_mode": "live",
+          "accent_color": "#2E7D32",
+          "voice_aliases": [
+            "canal 13",
+            "canal trece"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "canal_13_una_hora",
+          "title": "Canal 13 · 1 hora antes",
+          "subtitle": "Señal con retraso · configura stream_url",
+          "plugin_source": "xuper",
+          "target_content": "Canal 13 · 1 hora antes",
+          "playback_mode": "live",
+          "accent_color": "#558B2F",
+          "voice_aliases": [
+            "canal 13 menos una hora",
+            "canal 13 una hora antes"
+          ],
+          "extras": {}
         },
         {
           "id": "azteca_uno",
@@ -40,7 +112,8 @@
           "accent_color": "#EF6C00",
           "voice_aliases": [
             "azteca uno"
-          ]
+          ],
+          "extras": {}
         },
         {
           "id": "canal_7",
@@ -53,32 +126,35 @@
           "voice_aliases": [
             "canal siete",
             "canal 7"
-          ]
+          ],
+          "extras": {}
         },
         {
           "id": "canal_11",
           "title": "Canal Once",
           "subtitle": "Cultura y educación",
-          "plugin_source": "cultural",
+          "plugin_source": "iptv-org-mx-latam",
           "target_content": "Canal 11",
           "playback_mode": "live",
           "accent_color": "#00838F",
           "voice_aliases": [
             "canal once",
             "canal 11"
-          ]
+          ],
+          "extras": {}
         },
         {
           "id": "canal_22",
           "title": "Canal 22",
           "subtitle": "Cultura",
-          "plugin_source": "cultural",
+          "plugin_source": "iptv-org-mx-latam",
           "target_content": "Canal 22",
           "playback_mode": "live",
           "accent_color": "#2E7D32",
           "voice_aliases": [
             "canal 22"
-          ]
+          ],
+          "extras": {}
         },
         {
           "id": "n_mas",
@@ -91,7 +167,8 @@
           "voice_aliases": [
             "n mas",
             "n más"
-          ]
+          ],
+          "extras": {}
         },
         {
           "id": "multimedios",
@@ -103,7 +180,8 @@
           "accent_color": "#00695C",
           "voice_aliases": [
             "multimedios"
-          ]
+          ],
+          "extras": {}
         },
         {
           "id": "gourmet",
@@ -116,46 +194,50 @@
           "voice_aliases": [
             "gourmet",
             "el gourmet"
-          ]
+          ],
+          "extras": {}
         },
         {
           "id": "enlace",
           "title": "Canal Enlace",
           "subtitle": "Inspiración y familia",
-          "plugin_source": "pluto",
+          "plugin_source": "pluto-vix-free",
           "target_content": "Canal Enlace",
           "playback_mode": "live",
           "accent_color": "#4527A0",
           "voice_aliases": [
             "enlace",
             "canal enlace"
-          ]
+          ],
+          "extras": {}
         },
         {
           "id": "azteca_uno_una_hora",
           "title": "Azteca Uno · 1 hora antes",
           "subtitle": "Señal con retraso horario",
-          "plugin_source": "pluto",
+          "plugin_source": "pluto-vix-free",
           "target_content": "Azteca Uno -1 Hora",
           "playback_mode": "live",
           "accent_color": "#EF6C00",
           "voice_aliases": [
             "azteca uno menos una hora",
             "azteca una hora antes"
-          ]
+          ],
+          "extras": {}
         },
         {
           "id": "tv_unam",
           "title": "TV UNAM",
           "subtitle": "Cultura y conocimiento",
-          "plugin_source": "cultural",
+          "plugin_source": "iptv-org-mx-latam",
           "target_content": "TV UNAM",
           "playback_mode": "live",
           "accent_color": "#37474F",
           "voice_aliases": [
             "tv unam",
             "unam"
-          ]
+          ],
+          "extras": {}
         }
       ]
     },
@@ -167,7 +249,7 @@
           "id": "pedro_infante",
           "title": "Pedro Infante",
           "subtitle": "Cine mexicano clásico",
-          "plugin_source": "archive",
+          "plugin_source": "cine-oro-mexicano",
           "target_content": "Pedro Infante",
           "playback_mode": "search",
           "accent_color": "#6D4C41",
@@ -180,7 +262,7 @@
           "id": "cantinflas",
           "title": "Cantinflas",
           "subtitle": "Comedia clásica",
-          "plugin_source": "archive",
+          "plugin_source": "cine-oro-mexicano",
           "target_content": "Cantinflas",
           "playback_mode": "search",
           "accent_color": "#5D4037",
@@ -192,7 +274,7 @@
           "id": "jorge_negrete",
           "title": "Jorge Negrete",
           "subtitle": "Cine mexicano clásico",
-          "plugin_source": "archive",
+          "plugin_source": "cine-oro-mexicano",
           "target_content": "Jorge Negrete",
           "playback_mode": "search",
           "accent_color": "#455A64",
@@ -204,7 +286,7 @@
           "id": "cine_oro",
           "title": "Época de Oro",
           "subtitle": "Películas clásicas",
-          "plugin_source": "archive",
+          "plugin_source": "cine-oro-mexicano",
           "target_content": "cine de oro mexicano",
           "playback_mode": "search",
           "accent_color": "#8D6E63",
@@ -212,6 +294,275 @@
             "cine de oro",
             "películas viejas"
           ]
+        }
+      ]
+    },
+    {
+      "id": "novelas_destacadas",
+      "title": "📺 NOVELAS Y DRAMAS",
+      "items": [
+        {
+          "id": "la_rosa_de_guadalupe",
+          "title": "La Rosa de Guadalupe",
+          "subtitle": "Telenovela · configura fuente autorizada",
+          "plugin_source": "vod-latino-releases",
+          "target_content": "La Rosa de Guadalupe",
+          "playback_mode": "search",
+          "accent_color": "#AD1457",
+          "voice_aliases": [
+            "la rosa de guadalupe",
+            "la rosa",
+            "rosa de guadalupe"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "telenovelas",
+          "title": "Telenovelas",
+          "subtitle": "Catálogo de novelas",
+          "plugin_source": "vod-latino-releases",
+          "target_content": "Telenovelas",
+          "playback_mode": "search",
+          "accent_color": "#880E4F",
+          "voice_aliases": [
+            "novelas",
+            "telenovelas"
+          ],
+          "extras": {}
+        }
+      ]
+    },
+    {
+      "id": "doramas",
+      "title": "💜 DORAMAS",
+      "items": [
+        {
+          "id": "mienteme_lie_to_me",
+          "title": "Miénteme / Lie to Me",
+          "subtitle": "Título destacado · configura fuente autorizada",
+          "plugin_source": "doramaslatino-api",
+          "target_content": "Miénteme / Lie to Me",
+          "playback_mode": "search",
+          "accent_color": "#6A1B9A",
+          "voice_aliases": [
+            "miénteme",
+            "mienteme",
+            "lie to me",
+            "miénteme lie to me"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "doramas_catalogo",
+          "title": "Doramas Latino",
+          "subtitle": "Catálogo de doramas",
+          "plugin_source": "doramaslatino-api",
+          "target_content": "Doramas Latino",
+          "playback_mode": "search",
+          "accent_color": "#4527A0",
+          "voice_aliases": [
+            "doramas",
+            "doramas latinos"
+          ],
+          "extras": {}
+        }
+      ]
+    },
+    {
+      "id": "series_retro",
+      "title": "📼 SERIES RETRO Y CLÁSICAS",
+      "items": [
+        {
+          "id": "candy_candy",
+          "title": "Candy Candy",
+          "subtitle": "Serie clásica · configura fuente autorizada",
+          "plugin_source": "retroseries-latam",
+          "target_content": "Candy Candy",
+          "playback_mode": "search",
+          "accent_color": "#AD1457",
+          "voice_aliases": [
+            "candy candy"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "retro_series",
+          "title": "Series retro",
+          "subtitle": "Catálogo de series clásicas",
+          "plugin_source": "retroseries-latam",
+          "target_content": "Series retro",
+          "playback_mode": "search",
+          "accent_color": "#455A64",
+          "voice_aliases": [
+            "series retro",
+            "series clásicas",
+            "series de antes"
+          ],
+          "extras": {}
+        }
+      ]
+    },
+    {
+      "id": "iptv_respaldo",
+      "title": "📡 IPTV ORG MX & LATAM · RESPALDO",
+      "items": [
+        {
+          "id": "iptv_respaldo_info",
+          "title": "Canales de respaldo",
+          "subtitle": "Configura URLs públicas/autorizadas en el catálogo",
+          "plugin_source": "iptv-org-mx-latam",
+          "target_content": "Canales de respaldo",
+          "playback_mode": "menu",
+          "accent_color": "#00695C",
+          "voice_aliases": [
+            "iptv org",
+            "canales de respaldo"
+          ],
+          "extras": {}
+        }
+      ]
+    },
+    {
+      "id": "pluto_vix",
+      "title": "🟣 PLUTO TV & VIX · FUENTES AUTORIZADAS",
+      "items": [
+        {
+          "id": "el_gourmet_pluto",
+          "title": "El Gourmet",
+          "subtitle": "Requiere URL de fuente autorizada",
+          "plugin_source": "pluto-vix-free",
+          "target_content": "El Gourmet",
+          "playback_mode": "live",
+          "accent_color": "#AD1457",
+          "voice_aliases": [
+            "el gourmet",
+            "gourmet"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "enlace_pluto",
+          "title": "Enlace",
+          "subtitle": "Requiere URL de fuente autorizada",
+          "plugin_source": "pluto-vix-free",
+          "target_content": "Enlace",
+          "playback_mode": "live",
+          "accent_color": "#4527A0",
+          "voice_aliases": [
+            "enlace",
+            "canal enlace"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "hbo_multiplex",
+          "title": "HBO Multiplex",
+          "subtitle": "Requiere suscripción/fuente autorizada",
+          "plugin_source": "pluto-vix-free",
+          "target_content": "HBO Multiplex",
+          "playback_mode": "live",
+          "accent_color": "#263238",
+          "voice_aliases": [
+            "hbo multiplex",
+            "hbo"
+          ],
+          "extras": {}
+        }
+      ]
+    },
+    {
+      "id": "vod_latino",
+      "title": "🎬 VOD LATINO · ACCIÓN, ESTRENOS Y REALITY",
+      "items": [
+        {
+          "id": "accion",
+          "title": "Acción",
+          "subtitle": "VOD · configura fuente autorizada",
+          "plugin_source": "vod-latino-releases",
+          "target_content": "Acción",
+          "playback_mode": "search",
+          "accent_color": "#B71C1C",
+          "voice_aliases": [
+            "películas de acción",
+            "accion"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "estrenos",
+          "title": "Estrenos",
+          "subtitle": "VOD · configura fuente autorizada",
+          "plugin_source": "vod-latino-releases",
+          "target_content": "Estrenos",
+          "playback_mode": "search",
+          "accent_color": "#1565C0",
+          "voice_aliases": [
+            "estrenos",
+            "películas nuevas"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "narcos",
+          "title": "Narcos",
+          "subtitle": "VOD · configura fuente autorizada",
+          "plugin_source": "vod-latino-releases",
+          "target_content": "Narcos",
+          "playback_mode": "search",
+          "accent_color": "#37474F",
+          "voice_aliases": [
+            "narcos",
+            "películas de narcos"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "masterchef_mexico",
+          "title": "MasterChef México",
+          "subtitle": "Reality · configura fuente autorizada",
+          "plugin_source": "vod-latino-releases",
+          "target_content": "MasterChef México",
+          "playback_mode": "search",
+          "accent_color": "#EF6C00",
+          "voice_aliases": [
+            "masterchef",
+            "masterchef mexico"
+          ],
+          "extras": {}
+        },
+        {
+          "id": "survivor",
+          "title": "Survivor",
+          "subtitle": "Reality · configura fuente autorizada",
+          "plugin_source": "vod-latino-releases",
+          "target_content": "Survivor",
+          "playback_mode": "search",
+          "accent_color": "#2E7D32",
+          "voice_aliases": [
+            "survivor"
+          ],
+          "extras": {}
+        }
+      ]
+    },
+    {
+      "id": "navidad_total",
+      "title": "🎄 NAVIDAD TOTAL",
+      "items": [
+        {
+          "id": "navidad_total",
+          "title": "Películas navideñas",
+          "subtitle": "Catálogo navideño · configura fuentes autorizadas",
+          "plugin_source": "navidad-total",
+          "target_content": "Películas navideñas",
+          "playback_mode": "search",
+          "accent_color": "#B71C1C",
+          "voice_aliases": [
+            "navidad",
+            "películas navideñas",
+            "peliculas de navidad"
+          ],
+          "extras": {}
         }
       ]
     },
@@ -250,7 +601,7 @@
           "id": "retro",
           "title": "Series retro",
           "subtitle": "Series de antes",
-          "plugin_source": "retro-tv",
+          "plugin_source": "retroseries-latam",
           "target_content": "retro_list",
           "playback_mode": "menu",
           "accent_color": "#283593",
