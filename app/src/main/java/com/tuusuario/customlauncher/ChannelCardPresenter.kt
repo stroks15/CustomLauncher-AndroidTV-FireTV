@@ -59,7 +59,7 @@ class ChannelCardPresenter(
         }
 
         mostrarLogo(logo, textoLogo, titulo)
-        Glide.with(logo)
+        Glide.with(logo.context.applicationContext)
             .load(rutaParaGlide(contenido.logo))
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
@@ -87,7 +87,7 @@ class ChannelCardPresenter(
     override fun onUnbindViewHolder(viewHolder: Presenter.ViewHolder) {
         if (alMantenerPresionado != null) viewHolder.view.setOnLongClickListener(null)
         val logo = viewHolder.view.findViewById<ImageView>(R.id.logo)
-        Glide.with(logo).clear(logo)
+        Glide.with(logo.context.applicationContext).clear(logo)
         logo.setImageDrawable(null)
     }
 
