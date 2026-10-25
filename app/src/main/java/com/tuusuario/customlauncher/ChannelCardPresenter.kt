@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.leanback.widget.Presenter
 import com.bumptech.glide.Glide
+import com.tuusuario.customlauncher.epg.EpgRepository
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
@@ -39,9 +40,12 @@ class ChannelCardPresenter(
         val logo = vista.findViewById<ImageView>(R.id.logo)
         val textoLogo = vista.findViewById<TextView>(R.id.texto_logo)
         val titulo = vista.findViewById<TextView>(R.id.titulo)
+        val subtitulo = vista.findViewById<TextView>(R.id.subtitulo)
 
         zona.setBackgroundColor(contenido.accentColor)
         titulo.text = contenido.title
+        subtitulo.text = EpgRepository.currentProgram(contenido.extras["epg_channel_id"])
+            ?: contenido.subtitle
         textoLogo.text = contenido.title.uppercase()
         vista.contentDescription = contenido.title
 
