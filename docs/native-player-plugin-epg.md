@@ -20,7 +20,7 @@ En el elemento deseado de `recomendaciones_launcher.json`, añade una URL HLS/DA
 }
 ```
 
-El ejemplo es una plantilla, no una URL real. No se incluyen URLs de canales, servicios de suscripción ni endpoints inventados. Para reproducir contenido protegido, el proveedor debe autorizar el acceso y exponer un stream compatible; Media3 no elimina DRM ni restricciones de acceso.
+El ejemplo es una plantilla, no una URL real. No se incluyen URLs de canales, servicios de suscripción ni endpoints inventados. Para miniaturas dinámicas, añade también `"logo": "https://TU-DOMINIO-AUTORIZADO/miniatura.jpg"` al objeto del elemento (o una ruta como `logos/canal.png` dentro de assets); Glide aplica caché de memoria y disco. Para reproducir contenido protegido, el proveedor debe autorizar el acceso y exponer un stream compatible; Media3 no elimina DRM ni restricciones de acceso.
 
 ## Configurar la guía EPG
 
